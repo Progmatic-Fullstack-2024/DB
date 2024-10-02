@@ -1,6 +1,3 @@
-CREATE DATABASE orszagok;
-USE DATABASE orszagok;
-
 CREATE TABLE orszagok (
 id SERIAL PRIMARY KEY,
 orszag VARCHAR(27) NOT NULL DEFAULT '',

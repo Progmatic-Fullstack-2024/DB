@@ -59,3 +59,30 @@
 mezők neveit, vesszővel elválasztva
 SELECT column1, column2, column3 FROM table_name;
 ● ez az utasítás a táblában található összes rekordot visszaadja
+
+
+```SQL
+SELECT * FROM orszagok;
+
+SELECT COUNT(*) AS orszag_darabszam FROM orszagok;
+SELECT SUM(terulet) AS világ_terulet FROM orszagok;
+SELECT MIN(terulet) AS legkisebb_orszag  FROM orszagok;
+SELECT MAX(terulet) AS legkisebb_orszag  FROM orszagok;
+SELECT AVG(terulet) AS legkisebb_orszag  FROM orszagok;
+
+SELECT SUM(terulet) / COUNT(*) AS atlag_TERULET FROM orszagok;
+
+SELECT COUNT(*), allamforma FROM orszagok 
+WHERE foldr_hely LIKE '%Európa%'
+GROUP BY allamforma
+HAVING COUNT(*) > 1
+ORDER BY COUNT(*) ASC
+LIMIT 10;
+
+SELECT * FROM orszagok
+ORDER BY terulet
+LIMIT 10;
+
+SELECT * FROM orszagok
+LIMIT 10;
+```
