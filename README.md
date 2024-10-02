@@ -48,6 +48,8 @@
 ## Self Referencing
 - a tábla egyik rekordja a saját másik rekordjához tartozhat
 
+<hr />
+
 # SQL Lekérdezések - Parancsok listája
 
 ## 1. Adatlekérdezés és szűrés
