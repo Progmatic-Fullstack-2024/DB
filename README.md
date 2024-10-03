@@ -92,9 +92,40 @@ A `LIMIT` és `OFFSET` kombinálása hasznos lehet, például pagináció során
 
 - **Matematikai függvények**: `ABS()`, `ROUND()`, `CEIL()`, `FLOOR()`.
 - **Karakterfüggvények**: `UPPER()`, `LOWER()`, `LENGTH()`, `SUBSTRING()`.
-- **Dátumfüggvények**: `NOW()`, `CURDATE()`, `DATEDIFF()`, `DATEADD()`.
+
 - **COALESCE()**: Az első nem-null értéket adja vissza az argumentumokból.
   - **Példa**: `SELECT COALESCE(PhoneNumber, 'Nincs megadva') FROM Employees;`
+ 
+### Dátumfüggvények PostgreSQL-ben
+
+- **NOW()**: Elérhető, visszaadja az aktuális dátumot és időt (időzónával együtt).
+  ```sql
+  SELECT NOW();
+  ```
+
+- **CURRENT_DATE**: A `CURDATE()` helyett használandó, csak az aktuális dátumot adja vissza (idő nélkül).
+  ```sql
+  SELECT CURRENT_DATE;
+  ```
+
+- **Dátumok különbsége (DATEDIFF)**: Nincs közvetlen `DATEDIFF()` függvény PostgreSQL-ben. Ehelyett a dátumokat egyszerűen kivonhatjuk egymásból, és napokban kapjuk meg a különbséget.
+  ```sql
+  SELECT CURRENT_DATE - '2023-10-03'::date;
+  ```
+
+- **AGE() függvény**: Ha részletesebb különbségre van szükség (évek, hónapok, napok), akkor az `AGE()` függvény használható.
+  ```sql
+  SELECT AGE(CURRENT_DATE, '2020-01-01'::date);
+  ```
+
+- **Idő hozzáadása vagy kivonása (DATEADD)**: Nincs közvetlen `DATEADD()` függvény. Az időtartamok hozzáadásához vagy kivonásához az `INTERVAL` kulcsszó és a dátum-aritmetika használható.
+  ```sql
+  SELECT CURRENT_DATE + INTERVAL '1 year';
+  ```
+  ```sql
+  SELECT CURRENT_DATE - INTERVAL '3 months';
+  ```
+
 
 ## 5. Kapcsolatok kezelése (JOIN-ek)
 
