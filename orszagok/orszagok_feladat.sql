@@ -71,12 +71,16 @@ SELECT COUNT(*) FROM orszagok WHERE nepesseg BETWEEN 8000 AND 12000;
 -- 27. Mennyi Európa lakossága?
 -- 28. Mennyi Európa népsűrűsége?
 -- 29. Hány ország van Afrikában?
+SELECT COUNT(orszag) AS afrika__orszagia_db FROM orszagok WHERE foldr_hely LIKE '%Afrika%';
 -- 30. Mennyi Afrika lakossága?
 -- 31. Mennyi Afrika népsűrűsége?
 -- 32. Melyek a szigetországok?
+SELECT orszag, foldr_hely FROM orszagok WHERE foldr_hely LIKE '%szigetország%';
 -- 33. Mely országok államformája hercegség, vagy királyság?
 -- 34. Hány országnak nincs autójelzése?
+SELECT orszag, autojel FROM orszagok WHERE autojel LIKE '   ';
 -- 35. Mennyi a váltószáma az aprópénznek azokban az országokban, ahol nem 100?
+SELECT valtopenz FROM orszagok WHERE valtopenz NOT LIKE '100 %';
 -- 36. Hány ország területe kisebb Magyarországénál?
 -- 37. Melyik a legnagyobb területű ország, és mennyi a területe?
 -- 38. Melyik a legkisebb területű ország, és mennyi a területe?
@@ -92,9 +96,16 @@ SELECT COUNT(*) FROM orszagok WHERE nepesseg BETWEEN 8000 AND 12000;
 -- 48. Melyik tíz ország össz-GDP-je a legnagyobb?
 -- 49. Melyik országban a legszegényebbek az emberek (legkisebb a GDP, ahol egyáltalán van GDP)?
 -- 50. Melyik a 40. legkisebb területű ország?
+SELECT orszag, terulet FROM orszagok ORDER BY terulet ASC LIMIT 1 OFFSET 39; 
 -- 51. Melyik a 15. legkisebb népsűrűségű ország?
 -- 52. Melyik a 61. legnagyobb népsűrűségű ország?
--- 53. Melyik három ország területe hasonlít leginkább Magyaroszág méretéhez?
+SELECT orszag, terulet, nepesseg / terulet AS nepsuruseg FROM orszagok ORDER BY nepsuruseg DESC LIMIT 1 OFFSET 60; 
+-- 53. Melyik három ország területe hasonlít leginkább Magyarország méretéhez?
+SELECT terulet FROM orszagok WHERE orszag = 'MAGYARORSZÁG';
+SELECT orszag FROM orszagok 
+ORDER BY ABS(terulet - (SELECT terulet FROM orszagok WHERE orszag = 'MAGYARORSZÁG')) 
+OFFSET 1
+LIMIT 3;
 -- 54. Az emberek hányadrésze él Ázsiában?
 -- 55. A szárazföldek mekkora hányadát foglalja el Oroszország?
 -- 56. Az emberek hány százaléka fizet euroval?
@@ -105,5 +116,16 @@ SELECT COUNT(*) FROM orszagok WHERE nepesseg BETWEEN 8000 AND 12000;
 -- 61. Milyen államformák léteznek Európában?
 -- 62. Hányféle államforma létezik a világon?
 -- 63. Hányféle fizetőeszközt használnak Európában az eurón kívül?
+SELECT COUNT(DISTINCT(penznem)) FROM orszagok WHERE foldr_hely LIKE '%Európa%' AND penznem NOT IN ('euro', 'euró');
 -- 64. Mely pénznemeket használják több országban is?
 -- 65. Mely országok államformája egyedi?
+SELECT allamforma FROM orszagok GROUP BY allamforma HAVING COUNT(*) = 1;
+
+SELECT orszag FROM orszagok
+WHERE allamforma IN
+(SELECT allamforma FROM orszagok GROUP BY allamforma HAVING COUNT(*) = 1);
+SELECT orszag FROM
+orszagok
+JOIN 
+(SELECT allamforma  FROM orszagok GROUP BY allamforma HAVING COUNT(*) = 1) egyediallamforma
+ON orszagok.allamforma = egyediallamforma.allamforma;
