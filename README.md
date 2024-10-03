@@ -93,6 +93,8 @@ A `LIMIT` és `OFFSET` kombinálása hasznos lehet, például pagináció során
 - **Matematikai függvények**: `ABS()`, `ROUND()`, `CEIL()`, `FLOOR()`.
 - **Karakterfüggvények**: `UPPER()`, `LOWER()`, `LENGTH()`, `SUBSTRING()`.
 - **Dátumfüggvények**: `NOW()`, `CURDATE()`, `DATEDIFF()`, `DATEADD()`.
+- **COALESCE()**: Az első nem-null értéket adja vissza az argumentumokból.
+  - **Példa**: SELECT COALESCE(PhoneNumber, 'Nincs megadva') FROM Employees;
 
 ## 5. Kapcsolatok kezelése (JOIN-ek)
 
