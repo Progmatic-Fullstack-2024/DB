@@ -23,7 +23,8 @@ INSERT INTO pizza (pazon, pnev, par) VALUES
 (2, 'Frutti di Mare', 1350),
 (3, 'Hawaii', 850),
 (4, 'Vesuvio', 900),
-(5, 'Sorrento', 1050);
+(5, 'Sorrento', 1050),
+(6, 'Magyaros', 1050);
 
 
 CREATE TABLE vevo (
