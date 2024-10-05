@@ -83,8 +83,33 @@ WHERE NOW()::date - datum::date < 365;
 -- 17. Ki a legidősebb ügyfél?
 SELECT nev, szulev FROM ugyfel ORDER BY szulev LIMIT 1;
 -- 18. Ki, és mikor követte el a legkisebb összegű befizetést?
+SELECT nev, datum, osszeg 
+FROM befiz AS b JOIN ugyfel AS u ON b.azon = u.azon
+ORDER BY b.osszeg LIMIT 1;
 -- 19. Kinek a legkevesebb az összes befizetése?
+SELECT u.nev, SUM(b.osszeg) AS legkisebb 
+FROM befiz AS b JOIN ugyfel AS u ON b.azon = u.azon
+GROUP BY u.nev
+ORDER BY legkisebb
+LIMIT 1;
 -- 20. Van-e olyan ügyfél, aki még egyáltalán nem fizetett? Itt használd a NOT IN-t!
+SELECT nev
+FROM ugyfel LEFT JOIN befiz ON ugyfel.azon = befiz.azon
+WHERE osszeg IS NULL;
+SELECT nev
+FROM ugyfel
+WHERE azon NOT IN (SELECT azon FROM befiz);
 -- 21. Fejenként mennyit fizettek átlagosan az ügyfelek, ha az átlagba csak a fizető ügyfelek számítanak? Elvárt megoldás: 51777.7778
+SELECT SUM(osszeg) FROM befiz 
+GROUP BY azon;
+SELECT AVG(fejenkent) FROM (SELECT SUM(osszeg) AS fejenkent FROM befiz 
+GROUP BY azon);
+SELECT SUM(osszeg) / COUNT(DISTINCT(azon)) FROM befiz;
 -- 22. Fejenként mennyit fizettek átlagosan az ügyfelek a nem fizető ügyfeleket is beszámítva? Elvárt megoldás: 42363.6364
+SELECT SUM(osszeg) / COUNT(DISTINCT(ugyfel.azon))
+FROM ugyfel LEFT JOIN befiz ON ugyfel.azon = befiz.azon;
 -- 23. Kik azok az ügyfelek, akik az átlagosnál többet fizettek?
+SELECT SUM(osszeg), nev
+FROM ugyfel JOIN befiz ON ugyfel.azon = befiz.azon
+GROUP BY ugyfel.azon
+HAVING SUM(osszeg) > (SELECT SUM(osszeg) / COUNT(DISTINCT(azon)) FROM befiz);
