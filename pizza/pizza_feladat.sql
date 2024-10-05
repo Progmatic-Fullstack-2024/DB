@@ -21,15 +21,49 @@ Db N 3 egy rendelési tétel darabszáma
 */
 
 -- 1. Hogy hívják az egyes pizzafutárokat?
+SELECT fnev FROM futar;
 -- 2. Milyen pizzák közül lehet rendelni, és mennyibe kerülnek?
+SELECT pnev, par FROM pizza;
 -- 3. Mennyibe kerül átlagosan egy pizza?
+SELECT ROUND(AVG(par)) AS atlag_ár FROM pizza;
 -- 4. Mely pizzák olcsóbbak 1000 Ft-nál?
+SELECT pnev, par FROM pizza WHERE par < 1000;
 -- 5. Ki szállította házhoz az első (egyes sorszámú) rendelést?
+SELECT rendeles.fazon, futar.fnev 
+FROM rendeles JOIN futar ON rendeles.fazon = futar.fazon
+WHERE razon = 1;
 -- 6. Kik rendeltek pizzát délelőtt?
+SELECT DISTINCT(vevo.vnev)
+FROM rendeles JOIN vevo ON rendeles.vazon = vevo.vazon
+WHERE EXTRACT(hour FROM idopont::timestamp) < 12;
 -- 7. Milyen pizzákat evett Morgó?
+SELECT vevo.vnev, pizza.pnev
+FROM pizza 
+JOIN tetel ON pizza.pazon = tetel.pazon
+JOIN rendeles ON tetel.razon = rendeles.razon
+JOIN vevo ON vevo.vazon = rendeles.vazon
+WHERE vevo.vnev LIKE 'Morgó'
+GROUP BY pizza.pnev, vevo.vnev;
+
 -- 8. Ki szállított házhoz Tudornak?
+SELECT DISTINCT(futar.fnev) 
+FROM rendeles 
+JOIN futar ON rendeles.fazon = futar.fazon
+JOIN vevo ON rendeles.vazon = vevo.vazon
+WHERE vevo.vnev = 'Tudor'
+GROUP BY futar.fnev;
 -- 9. Az egyes rendelések alkalmával ki kinek szállított házhoz?
+SELECT vevo.vnev, futar.fnev, rendeles.razon
+FROM futar
+JOIN rendeles ON futar.fazon = rendeles.fazon
+JOIN vevo ON rendeles.vazon = vevo.vazon;
 -- 10. Mennyit költött pizzára Vidor?
+SELECT SUM(pizza.par * tetel.db)
+FROM vevo
+JOIN rendeles ON vevo.vazon = rendeles.vazon
+JOIN tetel ON rendeles.razon = tetel.razon
+JOIN pizza ON tetel.pazon = pizza.pazon
+WHERE vevo.vnev LIKE 'Vidor';
 -- 11. Hány alkalommal rendelt Sorrento pizzát Kuka?
 -- 12. Hány pizzát evett Szende?
 -- 13. Hányszor rendelt pizzát Hapci?
