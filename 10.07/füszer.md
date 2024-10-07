@@ -20,4 +20,4 @@ szám szám, a dátum pedig dátum stb.)
 Amit meg kell írnod:
 - adatbázis létrehozásának SQL utasítása
 - adatbázis használatának SQL utasítása
-- táblák és mezőik létrehozásának MySQL utasítása
+- táblák és mezőik létrehozásának SQL utasítása
