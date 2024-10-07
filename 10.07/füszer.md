@@ -1,4 +1,5 @@
-1. Fűszerbázis
+# Fűszerbázis
+
 Van egy fűszerárus barátom, aki unja már, hogy a Nagykönyvébe kell írnia a fűszereinek és
 fűszernövényeinek nevét, a raktáron lévő portékáját és azt, hogy mikor és hogyan pótolta ő
 az árukészletét… Ezért segíts neki! Készíts adatbázist, amely megkönnyíti a barátom
