@@ -155,3 +155,44 @@ A `LIMIT` és `OFFSET` kombinálása hasznos lehet, például pagináció során
 - `DROP INDEX`: Index törlése.
 - `PRIMARY KEY`: Elsődleges kulcs megadása.
 - `FOREIGN KEY`: Idegen kulcs megadása másik táblára való hivatkozással.
+
+## 9. Tipusok
+### Numerikus típusok
+- Egész számok
+  - SMALLINT
+  - INTEGER (vagy INT)
+  - BIGINT
+  - SERIAL
+  - REAL
+  - DECIMAL 
+- Karakterlánc típusok
+  - CHAR(n)
+  - VARCHAR(n)
+  - TEXT
+- Dátum és idő típusok
+  - DATE
+  - TIME
+  - TIMESTAMP
+  - TIMESTAMPTZ
+  - INTERVAL
+- Logikai típus
+  - BOOLEAN
+- Tömb típusok
+  - type[] (pl.: BOOLEAN[])
+- ENUM
+  - ENUM: Felhasználó által definiált típus, amely egy korlátozott értékkészletet tartalmaz 
+  - Először létre kell hozni (pl.:CREATE TYPE mood AS ENUM ('happy', 'sad', 'neutral');)
+  - Majd felhasználhatjuk mintha mindig is létezett volna ez a típus
+
+## 10. PRIMARY és FOREIGN KEY
+### PRIMARY KEY
+- A tábla rekordjait egyértemen azonosító mező
+- Minden esetben UNIQUE
+- Rendelkezik indexel
+- Nem lehet null (NOT NULL)
+- Leggyakrabban használt típus a SERIAL
+### FOREIGN KEY
+- Egy másik tábla UNIQUE mezőjére hivatkozik
+- Általában az a mező amire hivatkozik az a másik tábla PRIMARY KEY-e
+
+
