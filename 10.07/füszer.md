@@ -1,4 +1,5 @@
-1. Fűszerbázis
+# Fűszerbázis
+
 Van egy fűszerárus barátom, aki unja már, hogy a Nagykönyvébe kell írnia a fűszereinek és
 fűszernövényeinek nevét, a raktáron lévő portékáját és azt, hogy mikor és hogyan pótolta ő
 az árukészletét… Ezért segíts neki! Készíts adatbázist, amely megkönnyíti a barátom
@@ -18,6 +19,6 @@ a mezők adattípusa feleljen meg a tárolni kívánt adatnak (tehát a szöveg 
 szám szám, a dátum pedig dátum stb.)
 
 Amit meg kell írnod:
-- adatbázis létrehozásának MySQL utasítása
-- adatbázis használatának MySQL utasítása
-- táblák és mezőik létrehozásának MySQL utasítása
+- adatbázis létrehozásának SQL utasítása
+- adatbázis használatának SQL utasítása
+- táblák és mezőik létrehozásának SQL utasítása
