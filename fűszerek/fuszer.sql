@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS spice (
 );
 
 CREATE TABLE IF NOT EXISTS stock (
-	spice_id INT UNIQUE REFERENCES spice(id),
+	spice_id INT UNIQUE REFERENCES spice(id) ON UPDATE CASCADE ON DELETE CASCADE,
 	on_stock INT,
 	PRIMARY KEY (spice_id)
 );
@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS delivery (
 );
 
 CREATE TABLE IF NOT EXISTS spice_delivery (
-	delivery_id INT REFERENCES delivery(id),
-	spice_id INT REFERENCES spice(id),
+	delivery_id INT REFERENCES delivery(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	spice_id INT REFERENCES spice(id) ON UPDATE CASCADE ON DELETE CASCADE,
 	db INT,
 	PRIMARY KEY (delivery_id, spice_id)
 );
