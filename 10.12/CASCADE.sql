@@ -2,7 +2,7 @@ DELETE FROM pizza WHERE pnev = 'Hawaii';
 DELETE FROM tetel WHERE pazon = (SELECT pazon FROM pizza WHERE pnev = 'Hawaii');
 
 ALTER TABLE spice_delivery DROP CONSTRAINT spice_delivery_delivery_id_fkey;
-ALTER TABLE spice_delivery ADD CONSTRAINT FOREIGN KEY (delivery_id) REFERENCES delivery(id) ON DELETE CASCADE;
+ALTER TABLE spice_delivery ADD CONSTRAINT spice_delivery_delivery_id_fkey FOREIGN KEY (delivery_id) REFERENCES delivery(id) ON DELETE CASCADE;
 
 
 CREATE TABLE IF NOT EXISTS spice_delivery (
