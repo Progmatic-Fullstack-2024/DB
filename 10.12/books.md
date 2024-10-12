@@ -35,6 +35,8 @@ FLOOR(random()*6)1000+5000
  </DETAILS>
 
 18. Az Novel Nook bolt árat emel 10% al minden olyan könyvön ami 1990 után került kiadásra
+1. Vegyél fel egy új boltot 'Who read' néven , '1 Main St, Budapest' címmel elérhetőségek nélkül
+
 
 
 
