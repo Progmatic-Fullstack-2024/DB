@@ -30,7 +30,7 @@ Random egész szám generálása egy adott tartományban
 (pl. 5000 és 10000 között):
 
  ```sql
- FLOOR(5000 + random() * (10000 - 5000 + 1));
+FLOOR(random()*6)1000+5000
   ``` 
  </DETAILS>
 
