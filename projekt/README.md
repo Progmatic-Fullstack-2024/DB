@@ -42,3 +42,9 @@ A hallgatók részt vehetnek különböző hallgatói klubokban, ahol közössé
 - **Feladatok és pontszámok súlyozása:** A feladatok maximális pontszáma és a hallgatók teljesítményének súlyozása szintén komplexitást ad az adatbázis kezeléséhez.
 
 ---
+
+### Javasolt megoldás (el lehet térni tőle)
+
+<img src='./assets/diagram.png' />
+
+---
