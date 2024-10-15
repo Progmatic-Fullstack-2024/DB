@@ -168,3 +168,32 @@ Listázd ki azon hallgatókat, akik az utóbbi 2 évben iratkoztak be, és legal
 ### 20. feladat:
 
 Készíts egy tárolt eljárást, amely kiszámítja a hallgató súlyozott átlagos pontszámát egy adott kurzusban!
+
+<details>
+<summary>Súgó</summary>
+
+```sql
+CREATE OR REPLACE FUNCTION AtlagosPontszamitas(p_HallgatoID INT, p_KurzusID INT)
+RETURNS TABLE (
+    HallgatoID INT,
+    Vezeteknev VARCHAR,
+    Keresztnev VARCHAR,
+    AtlagosPontszam NUMERIC
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT H.HallgatoID, H.Vezeteknev, H.Keresztnev,
+           CAST(SUM(E.Pontszam * F.MaxPontszam) AS NUMERIC) / CAST(SUM(F.MaxPontszam) AS NUMERIC) AS AtlagosPontszam
+    FROM Hallgatok H
+    JOIN Ertekelesek E ON H.HallgatoID = E.HallgatoID
+    JOIN Feladatok F ON E.FeladatID = F.FeladatID
+    WHERE F.KurzusID = p_KurzusID AND H.HallgatoID = p_HallgatoID
+    GROUP BY H.HallgatoID, H.Vezeteknev, H.Keresztnev;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Függvény meghívása
+SELECT * FROM AtlagosPontszamitas(1, 7);
+```
+
+</details>
