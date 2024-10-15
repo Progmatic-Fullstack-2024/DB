@@ -48,3 +48,123 @@ A hallgatók részt vehetnek különböző hallgatói klubokban, ahol közössé
 <img src='./assets/diagram.png' />
 
 ---
+
+## Lekérdezéses feladatok
+
+### 1. feladat:
+
+Listázd ki az összes hallgatót, aki egy megadott kurzusra beiratkozott (pl. 1-es ID)!
+
+---
+
+### 2. feladat:
+
+Listázd ki az oktatókat, akik tanszékvezetők is!
+
+---
+
+### 3. feladat:
+
+Listázd ki a kurzusokat és azok előfeltételeit!
+
+---
+
+### 4. feladat:
+
+Számold ki az egyes hallgatók átlagos pontszámát egy adott kurzusban!
+
+---
+
+### 5. feladat:
+
+Listázd ki azokat a hallgatókat, akik több mint egy kör tagjai!
+
+---
+
+### 6. feladat:
+
+Listázd ki azokat a tanszékeket, amelyeknek nincs vezetője!
+
+---
+
+### 7. feladat:
+
+Listázd ki azon oktatókat, akik több kurzust is tanítanak!
+
+---
+
+### 8. feladat:
+
+Listázd ki azon hallgatókat, akik beiratkoztak egy kurzusra, de nem adtak be feladatot!
+
+---
+
+### 9. feladat:
+
+Listázd ki azon kurzusokat, amelyeknek több előfeltétele is van!
+
+---
+
+### 10. feladat:
+
+Számold ki az egyes hallgatók által felvett összes kreditet!
+
+---
+
+### 11. feladat:
+
+Listázd ki azon hallgatókat, akik még nem iratkoztak be egyetlen kurzusra sem!
+
+---
+
+### 12. feladat:
+
+Listázd ki azon hallgatókat csoportosítva, akik ugyanazon klubhoz tartoznak!
+
+---
+
+### 13. feladat:
+
+Listázd ki azokat az oktatókat, akik kurzusaira egyetlen hallgató sem iratkozott be!
+
+---
+
+### 14. feladat:
+
+Írj egy SQL lekérdezést, amely egy hallgató kurzusra történő beiratkozása esetén automatikusan beiratja a hallgatót az adott kurzus előfeltételi kurzusára is, ha van ilyen, és ha még nem iratkozott be az előfeltétel kurzusra.
+
+---
+
+### 15. feladat:
+
+Listázd ki azon hallgatókat, akik több különböző klubban is tagok!
+
+---
+
+### 16. feladat:
+
+Listázd ki azon kurzusokat, amelyekhez még nem hoztak létre feladatot!
+
+---
+
+### 17. feladat:
+
+Számold ki a hallgatói klubok taglétszámát és rendezd csökkenő sorrendben!
+
+---
+
+### 18. feladat:
+
+Listázd ki azon hallgatókat, akik az utóbbi 2 évben iratkoztak be, és legalább egy körnek a tagjai!
+
+---
+
+### 19. feladat:
+
+Írj egy lekérdezést, amely visszaadja azon kurzusok listáját, amelyeket olyan oktatók tanítanak, akik tanszékvezetők is!
+
+---
+
+### 20. feladat:
+
+Készíts egy tárolt eljárást, amely kiszámítja a hallgató súlyozott átlagos pontszámát egy adott kurzusban!
