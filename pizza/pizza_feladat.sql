@@ -1,3 +1,7 @@
+
+SELECT * 
+FROM pizza p JOIN tetel t ON p.pazon = t.pazon
+WHERE p.pazon = 1;
 /*
 Pizza: Pazon  Pnev Par
 Futar: Fazon Fnev Ftel
@@ -104,8 +108,40 @@ JOIN pizza ON tetel.pazon = pizza.pazon
 GROUP BY vevo.vnev, pizza.pnev
 ORDER BY vevo.vnev;
 -- 17. Ki hány pizzát szállított házhoz az egyes napokon?
+SELECT f.fnev, f.fazon, r.idopont::date, SUM(t.db) AS "db/day"
+FROM rendeles r
+JOIN futar f ON r.fazon = f.fazon
+JOIN tetel t ON r.razon = t.razon
+JOIN pizza p ON t.pazon = p.pazon
+GROUP BY f.fazon, f.fnev, r.idopont::date
+ORDER BY "db/day" DESC;
 -- 18. Ki hány pizzát rendelt az egyes napokon?
+SELECT v.vnev, r.idopont::date, SUM(t.db)
+FROM rendeles r
+JOIN vevo v ON r.vazon = v.vazon
+JOIN tetel t ON r.razon = t.razon
+GROUP BY v.vazon, r.idopont::date;
 -- 19. Mennyi volt a bevétel az egyes napokon?
+SELECT SUM(t.ft)
+FROM
+(SELECT p.par * SUM(t.db) AS ft, r.idopont::date AS nap
+FROM pizza p 
+JOIN tetel t ON p.pazon = t.pazon
+JOIN rendeles r ON t.razon = r.razon
+GROUP BY r.idopont::date, p.pazon) t
+GROUP BY t.nap;
+
+
+SELECT SUM(p.par * t.db) AS ft, r.idopont::date AS nap
+FROM pizza p 
+JOIN tetel t ON p.pazon = t.pazon
+JOIN rendeles r ON t.razon = r.razon
+GROUP BY r.idopont::date;
+
+SELECT *
+FROM pizza p 
+JOIN tetel t ON p.pazon = t.pazon
+JOIN rendeles r ON t.razon = r.razon;
 -- 20. Hány pizza fogyott naponta?
 -- 21. Mennyi pizza fogyott átlagosan naponta?
 -- 22. Hány pizzát rendeltek átlagosan egyszerre?

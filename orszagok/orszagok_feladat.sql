@@ -1,3 +1,9 @@
+select SUM(nepesseg), COUNT(nepesseg), MIN(nepesseg), MAX(nepesseg)
+from orszagok
+GROUP BY kat
+having orszag Like '%ország%';
+select * from orszagok; 
+
 /*
 Id N 11 azonosító
 Orszag C 27 az ország neve
@@ -61,14 +67,23 @@ SELECT COUNT(*) FROM orszagok WHERE terulet BETWEEN 50000 AND  150000;
 -- 19. Hány ország lakossága 8 és 12 millió közötti?
 SELECT COUNT(*) FROM orszagok WHERE nepesseg BETWEEN 8000 AND 12000;
 -- 20. Mely fővárosok népesebbek 20 millió főnél?
-
+SELECT capital FROM orszagok WHERE nep_fovaros > 20000;
 -- 21. Mely országok népsűrűsége nagyobb 500 fő/km2-nél?
+SELECT orszag FROM orszagok WHERE (terulet / nepesseg) /1000 < 500 ;
 -- 22. Hány ország államformája köztársaság?
+SELECT * FROM orszagok;
+SELECT COUNT(*) FROM orszagok WHERE allamforma LIKE 'köztársaság';
 -- 23. Mely országok pénzneme a kelet-karib dollár?
+SELECT orszag FROM orszagok WHERE penznem LIKE 'kelet-karib dollár';
 -- 24. Hány ország nevében van benne az "ORSZÁG" szó?
+SELECT COUNT(orszag) FROM orszagok WHERE orszag LIKE '%ORSZÁG%';
 -- 25. Mely országokban korona a hivatalos fizetőeszköz?
+SELECT orszag, penznem FROM orszagok WHERE penznem LIKE '%korona%';
 -- 26. Mennyi Európa területe?
+SELECT SUM(terulet) FROM orszagok WHERE foldr_hely LIKE '%Európa%';
 -- 27. Mennyi Európa lakossága?
+SELECT SUM(nepesseg) FROM orszagok WHERE foldr_hely LIKE '%Európa%';
+
 -- 28. Mennyi Európa népsűrűsége?
 -- 29. Hány ország van Afrikában?
 SELECT COUNT(orszag) AS afrika__orszagia_db FROM orszagok WHERE foldr_hely LIKE '%Afrika%';
@@ -77,15 +92,21 @@ SELECT COUNT(orszag) AS afrika__orszagia_db FROM orszagok WHERE foldr_hely LIKE 
 -- 32. Melyek a szigetországok?
 SELECT orszag, foldr_hely FROM orszagok WHERE foldr_hely LIKE '%szigetország%';
 -- 33. Mely országok államformája hercegség, vagy királyság?
+SELECT orszag FROM orszagok WHERE allamforma LIKE 'hercegség' OR allamforma LIKE 'királyság';
+SELECT orszag FROM orszagok WHERE allamforma IN ('hercegség', 'királyság');
 -- 34. Hány országnak nincs autójelzése?
 SELECT orszag, autojel FROM orszagok WHERE autojel LIKE '   ';
 -- 35. Mennyi a váltószáma az aprópénznek azokban az országokban, ahol nem 100?
 SELECT valtopenz FROM orszagok WHERE valtopenz NOT LIKE '100 %';
 -- 36. Hány ország területe kisebb Magyarországénál?
+SELECT COUNT(*) FROM orszagok WHERE terulet < (SELECT terulet FROM orszagok WHERE orszag = 'MAGYARORSZÁG');
+
 -- 37. Melyik a legnagyobb területű ország, és mennyi a területe?
 -- 38. Melyik a legkisebb területű ország, és mennyi a területe?
 -- 39. Melyik a legnépesebb ország, és hány lakosa van?
 -- 40. Melyik a legkisebb népességű ország, és hány lakosa van?
+SELECT orszag, nepesseg FROM orszagok ORDER BY nepesseg DESC  LIMIT 1;
+
 -- 41. Melyik a legsűrűbben lakott ország, és mennyi a népsűrűsége?
 -- 42. Melyik a legritkábban lakott ország, és mennyi a népsűrűsége?
 -- 43. Melyik a legnagyobb afrikai ország és mekkora?
