@@ -197,3 +197,101 @@ SELECT * FROM AtlagosPontszamitas(1, 7);
 ```
 
 </details>
+
+---
+
+## További feladatok (ha szükséges adj még hozzá sorokat az tábláidhoz)
+
+### 21. Feladat:
+
+    Listázd ki azon hallgatókat, akik legalább két különböző oktatótól vettek fel kurzust!
+
+---
+
+### 22. Feladat:
+
+    Listázd ki a legnépszerűbb kurzusokat (ahol a legtöbb hallgató iratkozott be)!
+
+---
+
+### 23. Feladat:
+
+    Számold ki az egyes hallgatók összpontszámát a beadott feladatok alapján!
+
+---
+
+### 24. Feladat:
+
+    Listázd ki azokat a hallgatókat, akik legalább egy 90%-os eredményt értek el egy feladatban!
+
+---
+
+### 25. Feladat:
+
+    Listázd ki azon kurzusokat, amelyekhez a legtöbb feladatot hozták létre!
+
+---
+
+### 26. Feladat:
+
+    Listázd ki azon hallgatókat, akik soha nem iratkoztak be egy olyan kurzusra, ahol a saját tanszékük oktatója tanít!
+
+---
+
+### 27. Feladat:
+
+    Számold ki, hogy egy adott hallgató hányszor iratkozott be különböző kurzusokra ugyanazon oktatóhoz!
+
+---
+
+### 28. Feladat:
+
+    Listázd ki azon hallgatókat, akik legalább egy tanszékhez tartozó oktató által vezetett kurzusokra iratkoztak be!
+
+---
+
+### 29. Feladat:
+
+    Listázd ki a legjobban teljesítő hallgatókat (átlagpontszám alapján) kurzusonként!
+
+---
+
+### 30. Feladat:
+
+    Listázd ki azon hallgatókat, akik legalább két tanszékhez tartozó kurzusra iratkoztak be!
+
+---
+
+### 31. Feladat:
+
+    Számold ki, hogy egy adott oktató hány hallgatót tanított összesen!
+
+---
+
+### 32. Feladat:
+
+    Listázd ki azon klubokat, amelyek legalább 5 hallgatót foglalkoztatnak!
+
+---
+
+### 33. Feladat:
+
+    Listázd ki azon hallgatókat, akik beiratkoztak egy olyan kurzusra, amelynek előfeltételeként szereplő kurzusra még nem iratkoztak be!
+
+---
+
+### 34. Feladat:
+
+    Listázd ki azon oktatókat, akik ugyanazon hallgatót több különböző kurzuson is tanították!
+
+---
+
+### 35. Feladat:
+
+    Listázd ki azon klubok nevét és a csatlakozott hallgatók nevét, ahol legalább egy klubtag hallgató beiratkozott egy adott kurzusra!
+
+---
+
+### 36. Feladat:
+
+    Számold ki azon oktatók átlagos tanulólétszámát, akik legalább három kurzust tanítanak!
